@@ -19,3 +19,13 @@
 Open the Kaggle notebook or run locally:
 
 pip install pandas numpy matplotlib seaborn
+
+Week 2: Building ML Models
+- Baseline (always "stay"): accuracy 0.735
+- Best model: Logistic Regression, AUC 0.842, recall 0.754 at threshold 0.3
+- Top churn drivers (permutation importance): tenure, TotalCharges, Contract_Two year
+- Threshold chosen: 0.3, because a missed churner costs PKR 6,000 vs PKR 1,000 for an unneeded offer
+- Engineered features: n_services, is_new, charge_per_mo, price_jump; effect on AUC: 0.842 -> 0.842
+- Biggest lesson: Accuracy hides missed churners; the threshold is a business decision.
+
+add Codeadd Markdown
