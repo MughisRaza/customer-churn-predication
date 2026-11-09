@@ -30,18 +30,18 @@ Week 2: Building ML Models
 
 add Codeadd Markdown
 
-- Chosen model: XGBoost (tuned), because its CV AUC (0.8502 +/- 0.0117) was the highest of the three
-  candidates (LR 0.8464 +/- 0.0129, RF 0.8464 +/- 0.0114). The choice was made from the CV table only,
-  and the test set was used once afterwards. The margin is small: XGBoost leads by 0.0038, about
-  one-third of a standard deviation, so it is a slight edge, not a clear win. LR and RF are tied.
-- Single test AUC = 0.8483. CV mean +/- 2 std = [0.827, 0.874] (0.8502 -/+ 2 x 0.0117).
-  Inside the interval? Yes. The test AUC is only 0.0019 below the CV mean, far less than one std,
-  so the CV estimate was honest. The small drop is consistent with the winner's curse (the CV score
-  was the best of many tuned settings) and ordinary split noise. At the 0.5 threshold the model has
-  recall 0.521 and precision 0.659: it catches about half of the churners, and about two-thirds of
-  the customers it flags actually churn.
-- My Week 2 best model scored [your Week 2 number]. Tuning gained [test AUC 0.8483 minus your Week 2
-  number]. [Explain it: if the gain is under about 0.01, that is within one CV std (about 0.012),
-  so tuning gave little real improvement. The LR validation curve was flat from C = 1 upward, and
-  grid, random search and the other settings all landed within about 0.001 of each other, which
-  suggests this dataset has a performance ceiling around AUC 0.85 that no model family breaks.]
+Seeds min/max: 0.78 0.828
+Grid time / Random time: 76 82
+RF best params: {'max_depth': 15, 'max_features': np.float64(0.21273937997981013), 'min_samples_leaf': 15}
+             model  cv_auc  cv_std
+      LR (tuned C)  0.8464  0.0129
+RF (random search)  0.8464  0.0114
+   XGBoost (tuned)  0.8502  0.0117
+Chosen k: 4
+         customers  tenure  monthly  services  churn_rate
+cluster                                                  
+1             2157   18.38    80.41      3.28        0.43
+3             1918    8.96    37.71      1.20        0.32
+2             1938   59.83    92.09      5.06        0.14
+0             1030   53.61    30.96      1.48        0.05
+PCA 90%: 15 of 30
