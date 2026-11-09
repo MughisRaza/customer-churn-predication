@@ -29,3 +29,19 @@ Week 2: Building ML Models
 - Biggest lesson: Accuracy hides missed churners; the threshold is a business decision.
 
 add Codeadd Markdown
+
+- Chosen model: XGBoost (tuned), because its CV AUC (0.8502 +/- 0.0117) was the highest of the three
+  candidates (LR 0.8464 +/- 0.0129, RF 0.8464 +/- 0.0114). The choice was made from the CV table only,
+  and the test set was used once afterwards. The margin is small: XGBoost leads by 0.0038, about
+  one-third of a standard deviation, so it is a slight edge, not a clear win. LR and RF are tied.
+- Single test AUC = 0.8483. CV mean +/- 2 std = [0.827, 0.874] (0.8502 -/+ 2 x 0.0117).
+  Inside the interval? Yes. The test AUC is only 0.0019 below the CV mean, far less than one std,
+  so the CV estimate was honest. The small drop is consistent with the winner's curse (the CV score
+  was the best of many tuned settings) and ordinary split noise. At the 0.5 threshold the model has
+  recall 0.521 and precision 0.659: it catches about half of the churners, and about two-thirds of
+  the customers it flags actually churn.
+- My Week 2 best model scored [your Week 2 number]. Tuning gained [test AUC 0.8483 minus your Week 2
+  number]. [Explain it: if the gain is under about 0.01, that is within one CV std (about 0.012),
+  so tuning gave little real improvement. The LR validation curve was flat from C = 1 upward, and
+  grid, random search and the other settings all landed within about 0.001 of each other, which
+  suggests this dataset has a performance ceiling around AUC 0.85 that no model family breaks.]
